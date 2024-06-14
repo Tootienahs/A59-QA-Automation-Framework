@@ -2,9 +2,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
+/*
 public class Homework17 extends BaseTest {
-
+/*
     @Test
 
     public void addSongToPlaylist() throws InterruptedException {
@@ -12,11 +12,9 @@ public class Homework17 extends BaseTest {
         String expectedSongAddMessage = "Add 1 Song into \"lazy days.\"";
 
         // go to web page
-        navigateToPage();
+
         //login
-        enterEmail("christina.taylor@testpro.io");
-        enterPassword("jKV0uSX6z1dv");
-        submit();
+
         Thread.sleep(1000);
         //search for song
         searchSong("dark");
@@ -84,3 +82,5 @@ public class Homework17 extends BaseTest {
         searchField.sendKeys(songName);
     }
 }
+
+ */

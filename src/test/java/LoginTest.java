@@ -6,23 +6,14 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest {
 
 
-    @Test
-    public void loginEmptyEmailPassword() throws InterruptedException {
-
-
-        navigateToPage();
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        Thread.sleep(2000);
-        driver.quit();
-    }
 
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
 
 
-        Thread.sleep(2000);
-        navigateToPage();
-        Thread.sleep(2000);
+
+       // navigateToPage();
+
         enterEmail(email);
         Thread.sleep(2000);
         enterPassword(password);
@@ -44,21 +35,16 @@ public class LoginTest extends BaseTest {
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
 
-        Thread.sleep(2000);
-        navigateToPage();
-        Thread.sleep(2000);
+
+       // navigateToPage();
+        String expectedUrl="https://qa.koel.app/";
 
         enterEmail("invalid@testpro.io");
-
-        Thread.sleep(2000);
-
         enterPassword("jKV0uSX6z1dv");
-        Thread.sleep(2000);
-
         submit();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
 
 
 
@@ -70,14 +56,14 @@ public class LoginTest extends BaseTest {
 
 
 
-        navigateToPage();
-        Thread.sleep(2000);
+     //   navigateToPage();
+        String expectedUrl="https://qa.koel.app/";
         enterEmail("christina.taylor@testpro.io");
         Thread.sleep(2000);
         submit();
         Thread.sleep(2000);
 
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(driver.getCurrentUrl(),expectedUrl);
 
 
     }

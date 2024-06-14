@@ -7,29 +7,31 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
 public class BaseTest {
 
     WebDriver driver = null;
-    ChromeOptions options = new ChromeOptions();
-    String url = "https://qa.koel.app/";
-    String password = "jKV0uSX6z1dv";
-    String email = "christina.taylor@testpro.io";
-@BeforeSuite
-    static void setup() {
-WebDriverManager.chromedriver().setup();
 
+    ChromeOptions options = new ChromeOptions();
+
+    String url = "https://qa.koel.app/";
+    enter
+
+
+  @BeforeSuite
+ static void setupClass() { WebDriverManager.chromedriver().setup();}
 }
         @BeforeMethod
-        public void launchBrowser(){
+
+        public void launchBrowser(String baseURL){
 
             options.addArguments("--remote-allow-origins=*");
-
             driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            driver.manage().window().maximize();
+            driver.manage().window().maximize();;
 
         }
  @AfterMethod
@@ -56,7 +58,7 @@ WebDriverManager.chromedriver().setup();
         emailField.sendKeys(email);
     }
 
-    protected void navigateToPage() {
+    protected void navigateToPage(){
         driver.get(url);
     }
 }

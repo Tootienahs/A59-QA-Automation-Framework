@@ -2,8 +2,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-/*
+
 import java.util.UUID;
+
+import static sun.security.jgss.GSSUtil.login;
 
 public class ProfileTests extends BaseTest{
 
@@ -11,13 +13,11 @@ public class ProfileTests extends BaseTest{
 
     public void profileTest() throws InterruptedException {
 
-        navigateToPage();
-        enterEmail(email);
-        enterPassword(password);
-        submit();
+        //navigateToPage();
+        loginCredentials();
         navigateToProfilePage();
-
-        changeName(uniqueName );
+        String uniqueName = generateUniquelyName();
+        changeName(uniqueName);
         String profileName = getProfileName();
         Assert.assertEquals(profileName, uniqueName);
         
@@ -27,6 +27,12 @@ public class ProfileTests extends BaseTest{
 
 
 
+    }
+
+    private void loginCredentials() throws InterruptedException {
+        enterEmail("christina.taylor@testpro.io");
+        enterPassword("jKV0uSX6z1dv");
+        submit();
     }
 
     private String getProfileName() {
@@ -56,6 +62,7 @@ public class ProfileTests extends BaseTest{
 
     private void enterNewName(String name) {
         WebElement newName = driver.findElement(By.id("inputProfileName"));
+        newName.clear();
         newName.sendKeys(name);
 
     }
@@ -73,5 +80,3 @@ public class ProfileTests extends BaseTest{
 
     }
 }
-*
- */
