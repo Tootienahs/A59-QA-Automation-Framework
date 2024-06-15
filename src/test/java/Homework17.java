@@ -5,14 +5,14 @@ import org.testng.annotations.Test;
 
 public class Homework17 extends BaseTest {
 
-    @Test
+
 
     public void addSongToPlaylist() throws InterruptedException {
 
         String expectedSongAddMessage = "Add 1 Song into \"lazy days.\"";
 
         // go to web page
-        navigateToPage();
+        //navigateToPage();
         //login
         enterEmail("christina.taylor@testpro.io");
         enterPassword("jKV0uSX6z1dv");

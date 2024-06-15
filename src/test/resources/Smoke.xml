@@ -8,8 +8,14 @@
         <classes>
             <class name="LoginTest"/>
                    <methods>
-                       <include name="loginValidEmailPassword">
+                       <include name="loginValidEmailPassword"/>
                    </methods>
-            </classes>
+            </class>
+            <class name="LoginTest"/>
+                <include name="lProfileTest"/>
+            <methods>
+                <include name = "changeProfileName"
+            <methods/>
+            </class>
     </test>
 </suite>
