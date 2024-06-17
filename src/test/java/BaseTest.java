@@ -4,47 +4,66 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
 public class BaseTest {
-    protected WebDriver driver = null;
 
-    @BeforeSuite
-    public void setupClass() {
-        WebDriverManager.chromedriver().setup();
+    WebDriver driver = null;
+    ChromeOptions options = new ChromeOptions();
+
+
+
+
+   // String url = "https://qa.koel.app/";
+  //  String password = "jKV0uSX6z1dv";
+ //   String email = "christina.taylor@testpro.io";
+@BeforeSuite
+
+    static void setup() {
+WebDriverManager.chromedriver().setup();
+
+}
+        @BeforeMethod
+        @Parameters({"BaseURL"})
+        public void launchBrowser(String baseURL){
+
+            options.addArguments("--remote-allow-origins=*");
+
+            driver = new ChromeDriver(options);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().window().maximize();
+            navigateToPage(baseURL);
+
+        }
+ @AfterMethod
+
+    public void closeBrowser(){
+    driver.quit();
+ }
+
+    protected void submit() throws InterruptedException {
+        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+        submit.click();
+        Thread.sleep(2000);
     }
-// I cant get ride of the red line here.
-    // also do I nee to delete the login text class and remove it from TestNG
-    @BeforeMethod
-    @Parameters("baseUrl")
-    public void setup(String baseUrl) {
-        ChromeOptions options = new ChromeOptions();
-        optionsChromeLocal.addArguments("--disable-notifications", "--remote-allow-origins=*", "incognito",
-                "--start-maximized", "-lang=en");
-        driver = new ChromeDriver(optionsChromeLocal);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(baseUrl);
 
-
+    protected void enterPassword(String password) {
+        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        passwordField.clear();
+        passwordField.sendKeys(password);
     }
 
-    @AfterMethod
-    public void closeBrowser() {
-        driver.quit();
-
+    protected void enterEmail(String email) {
+        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        emailField.clear();
+        emailField.sendKeys(email);
     }
 
-    public void login(String email, String password) {
-        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
-        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
-        WebElement loginButton = driver.findElement(By.cssSelector("[type='submit']"));
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+    protected void navigateToPage(String url) {
+        driver.get(url);
     }
 }
+
+
