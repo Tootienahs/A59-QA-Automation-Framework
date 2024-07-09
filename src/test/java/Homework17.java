@@ -22,6 +22,7 @@ loginPage.login();
 
 
         String expectedSongAddMessage = "Add 1 Song into \"lazy days.\"";
+
         //search for song
         searchSong("dark");
         //click view all button
@@ -32,6 +33,14 @@ loginPage.login();
         clickAddToBtn();
         //choose a playlist from
         chosePlayList();
+
+        allSongsPage.searchSong("dark");
+        homePage.viewAllBtn();
+        allSongsPage.selectFirstSong();
+        homePage.clickAddToBtn();
+        playlistPage.choosePlayList();
+
+
 
 
 
